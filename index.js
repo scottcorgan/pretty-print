@@ -1,5 +1,6 @@
 require('colors');
 var _ = require('lodash');
+var feedback = require('feedback');
 
 var prettyPrint = {
   object: function (obj, extraPadding) {
@@ -12,7 +13,7 @@ var prettyPrint = {
     
     _.each(keys, function (key) {
       var paddedKey = prettyPrint._addPadding(key, maxKeyLen);
-      console.log('  ' + paddedKey.bold + JSON.stringify(obj[key]));
+      feedback.info('  ' + paddedKey.bold + JSON.stringify(obj[key]));
     });
   },
   
@@ -28,7 +29,7 @@ var prettyPrint = {
       if (!objKey) return;
       
       var paddedKey = prettyPrint._addPadding(objKey, maxKeyLen);
-      console.log('  ' + paddedKey.bold + obj[value]);
+      feedback.info('  ' + paddedKey.bold + obj[value]);
     });
   },
   

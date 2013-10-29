@@ -1,6 +1,6 @@
 {
   "name": "pretty-print",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Print formatted data to the the command line",
   "main": "index.js",
   "scripts": {
@@ -25,7 +25,8 @@
   },
   "dependencies": {
     "lodash": "~2.2.1",
-    "colors": "~0.6.2"
+    "colors": "~0.6.2",
+    "feedback": "~0.1.x"
   },
   "devDependencies": {
     "tape": "~2.1.0"
