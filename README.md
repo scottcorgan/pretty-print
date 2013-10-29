@@ -44,4 +44,7 @@ pretttyPrint.array([
 ], 'name', 'height');
 
 // outputs:
+//
+// guy:   short
+// girl:  short
 ```
