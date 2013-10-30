@@ -13,7 +13,7 @@ var prettyPrint = {
     
     _.each(keys, function (key) {
       var paddedKey = prettyPrint._addPadding(key, maxKeyLen);
-      feedback.info('  ' + paddedKey.bold + JSON.stringify(obj[key]));
+      feedback.info('  ' + paddedKey.bold + JSON.stringify(obj[key]).replace(/^\"|\"$/g, ''));
     });
   },
   
