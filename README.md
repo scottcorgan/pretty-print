@@ -11,17 +11,22 @@ npm install pretty-print --save
 
 ## Usage
 
-### print(array, [options]);
+###Object
 
-####Object
+**Options**
+
+* ` padding ` - extra padding after the object key
 
 ```javascript
 var print = require('pretty-print');
+var options = {
+  padding: 3
+};
 
 print({
   key: 'value'
   longerKey: 'value'
-});
+}, options);
 
 // outputs
 //
@@ -29,12 +34,23 @@ print({
 // longerKey  value
 ```
 
-#### Array of objects
+### Array of objects
+
+**Options**
+
+* ` padding ` - extra padding after the object key
+* ` key ` - name of the value to use as the list key
+* ` value ` - name of value to use as the list value
 
 ```javascript
-var prettyPrint = require('pretty-print');
+var print = require('pretty-print');
+var options = {
+  padding: 3,
+  key: 'name',
+  value: 'height'
+};
 
-pretttyPrint.array([
+printy([
   {
     name: 'guy',
     height: 'short',
@@ -43,10 +59,24 @@ pretttyPrint.array([
     name: 'girl',
     height: 'short'
   }
-], 'name', 'height');
+], options);
 
 // outputs:
 //
 // guy:   short
 // girl:  short
+```
+
+### Array of strings or numbers
+
+```javascript
+var print = require('pretty-print');
+
+print(['val1', 'val2', 'val3']);
+
+// outputs:
+//
+//  val1
+//  val2
+//  val3
 ```
