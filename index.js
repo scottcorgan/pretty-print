@@ -44,8 +44,10 @@ function printArrayOfObjects (data, options) {
     var objKey = obj[options.key];
     if (!objKey) return;
     
-    var paddedKey = addPadding(objKey, maxKeyLen);
-    feedback.info('  ' + paddedKey.bold + obj[options.value]);
+    var paddedKey = '  ' + addPadding(objKey, maxKeyLen).bold;
+    
+    if (options.value) paddingKey += obj[options.value];
+    feedback.info(paddedKey);
   });
 }
 
