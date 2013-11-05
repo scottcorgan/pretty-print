@@ -11,23 +11,25 @@ npm install pretty-print --save
 
 ## Usage
 
+### print(array, [options]);
+
 ####Object
 
 ```javascript
-var prettyPrint = require('pretty-print');
+var print = require('pretty-print');
 
-prettyPrint.object({
+print({
   key: 'value'
   longerKey: 'value'
 });
 
-// outputs:
+// outputs
 //
-// key:        value
-// longerKey:  value
+// key        value
+// longerKey  value
 ```
 
-#### Array
+#### Array of objects
 
 ```javascript
 var prettyPrint = require('pretty-print');
