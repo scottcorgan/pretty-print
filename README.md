@@ -50,7 +50,7 @@ var options = {
   value: 'height'
 };
 
-printy([
+print([
   {
     name: 'guy',
     height: 'short',
