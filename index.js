@@ -1,5 +1,6 @@
 var _ = require('lodash');
 var feedback = require('feedback');
+var chalk = require('chalk');
 
 var print = module.exports = function (data, options) {
   if (isBasicArray(data)) return printBasicArray(data, options);
@@ -25,7 +26,7 @@ function printObject (data, options) {
   
   _.each(keys, function (key) {
     var paddedKey = addPadding(key, maxKeyLen);
-    feedback.info('  ' + paddedKey.bold + JSON.stringify(data[key]).replace(/^\"|\"$/g, ''));
+    feedback.info('  ' + chalk.bold(paddedKey) + JSON.stringify(data[key]).replace(/^\"|\"$/g, ''));
   });
 }
 
@@ -44,7 +45,7 @@ function printArrayOfObjects (data, options) {
     var objKey = obj[options.key];
     if (!objKey) return;
     
-    var paddedKey = '  ' + addPadding(objKey, maxKeyLen).bold;
+    var paddedKey = '  ' + chalk.bold(addPadding(objKey, maxKeyLen));
     
     if (options.value) paddedKey += obj[options.value];
     feedback.info(paddedKey);
