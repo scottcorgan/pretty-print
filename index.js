@@ -10,42 +10,59 @@ var print = module.exports = function (data, options) {
 
 function printObject (data, options) {
   var defaults = {
-    padding: 0
+    leftPadding: 2,
+    rightPadding: 2
   };
   
   _.defaults(options, defaults);
   
   if (options) {
-    padding = options.padding || 0;
+    var padding = options.padding || 0;
   }
   
   var keys = _.keys(data);
   var maxKeyLen = _.max(_.map(keys, function (key) {
     return key.length;
-  })) + options.padding;
+  })) + options.rightPadding;
   
   _.each(keys, function (key) {
     var paddedKey = addPadding(key, maxKeyLen);
-    feedback.info('  ' + chalk.bold(paddedKey) + JSON.stringify(data[key]).replace(/^\"|\"$/g, ''));
+    var leftPadding = options.leftPadding;
+    var lPad = '';
+    
+    while (leftPadding--) {
+      lPad += ' ';
+    }
+    
+    feedback.info(lPad + paddedKey + JSON.stringify(data[key]).replace(/^\"|\"$/g, ''));
   });
 }
 
 function printArrayOfObjects (data, options) {
   var defaults = {
-    padding: 0
+    padding: 0,
+    leftPadding: 2,
+    rightPadding: 2
   };
   
   _.defaults(options, defaults);
   
   var maxKeyLen = _.max(_.map(data, function (obj) {
     return obj[options.key].length;
-  })) + options.padding;
+  })) + options.rightPadding;
   
   _.each(data, function (obj) {
     var objKey = obj[options.key];
+    var leftPadding = options.leftPadding;
+    var lPad = '';
+    
     if (!objKey) return;
     
-    var paddedKey = '  ' + chalk.bold(addPadding(objKey, maxKeyLen));
+    while (leftPadding--) {
+      lPad += ' ';
+    }
+    
+    var paddedKey = lPad + addPadding(objKey, maxKeyLen);
     
     if (options.value) paddedKey += obj[options.value];
     feedback.info(paddedKey);
@@ -53,12 +70,21 @@ function printArrayOfObjects (data, options) {
 }
 
 function printBasicArray (data, options) {
-  var defaults = {};
+  var defaults = {
+    leftPadding: 2
+  };
+  
+  var leftPadding = options.leftPadding;
+  var lPad = '';
+  
+  while (leftPadding--) {
+    lPad += ' ';
+  }
   
   _.defaults(options, defaults);
   
   _.each(data, function (val) {
-    feedback.info('  ' + val);
+    feedback.info(lPad + val);
   });
 };
 

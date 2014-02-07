@@ -15,12 +15,14 @@ npm install pretty-print --save
 
 **Options**
 
-* ` padding ` - extra padding after the object key
+* ` leftPadding ` - extra padding before the object key. Defaults to 2.
+* ` rightPadding ` - extra padding after the object key. Defaults to 2.
 
 ```javascript
 var print = require('pretty-print');
 var options = {
-  padding: 3
+  leftPadding: 2,
+  rightPadding: 3
 };
 
 print({
@@ -30,22 +32,23 @@ print({
 
 // outputs
 //
-// key        value
-// longerKey  value
+//   key        value
+//   longerKey  value
 ```
 
 ### Array of objects
 
 **Options**
 
-* ` padding ` - extra padding after the object key
+* ` leftPadding ` - extra padding before the object key. Defaults to 2.
+* ` rightPadding ` - extra padding after the object key. Defaults to 2.
 * ` key ` - name of the value to use as the list key
 * ` value ` - name of value to use as the list value
 
 ```javascript
 var print = require('pretty-print');
 var options = {
-  padding: 3,
+  rightPadding: 3,
   key: 'name',
   value: 'height'
 };
@@ -72,7 +75,7 @@ print([
 ```javascript
 var print = require('pretty-print');
 
-print(['val1', 'val2', 'val3']);
+print(['val1', 'val2', 'val3'], {leftPadding: 0});
 
 // outputs:
 //

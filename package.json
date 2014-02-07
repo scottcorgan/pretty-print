@@ -1,6 +1,6 @@
 {
   "name": "pretty-print",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "Print formatted data to the the command line",
   "main": "index.js",
   "scripts": {
