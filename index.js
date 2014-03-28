@@ -1,6 +1,7 @@
 var _ = require('lodash');
 var feedback = require('feedback');
 var chalk = require('chalk');
+var util = require('util');
 
 var print = module.exports = function (data, options) {
   if (isBasicArray(data)) return printBasicArray(data, options);
@@ -34,7 +35,20 @@ function printObject (data, options) {
       lPad += ' ';
     }
     
-    feedback.info(lPad + paddedKey + JSON.stringify(data[key]).replace(/^\"|\"$/g, ''));
+    if (util.isArray(data[key])){
+      var blankKey = key.replace(/./gi, ' '); // used for spacing
+      var blankPaddedKey = addPadding(blankKey, maxKeyLen);
+      var arr = data[key];
+      
+      feedback.info(lPad + paddedKey + JSON.stringify(arr[0]).replace(/^\"|\"$/g, ''));
+      
+      for(var i = 1; i < arr.length; i += 1) {
+        feedback.info(lPad + blankPaddedKey + JSON.stringify(arr[i]).replace(/^\"|\"$/g, ''));
+      }
+    }
+    else{
+      feedback.info(lPad + paddedKey + JSON.stringify(data[key]).replace(/^\"|\"$/g, ''));
+    }
   });
 }
 

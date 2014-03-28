@@ -17,7 +17,15 @@ var print = require('../');
 // }];
 
 
-var data = ['name1', 'name2'];
+// var data = ['name1', 'name2'];
+
+data = {
+  name: 'Scott',
+  age: 30,
+  emails: ['scottcorgan@gmail.com', 'scott@divshot.com', 'scott@lakeshorecitychurch.com'],
+  wife: 'Lindsay'
+}
+
 
 print(data, {
   // padding: 3,
