@@ -35,7 +35,7 @@ function printObject (data, options) {
       lPad += ' ';
     }
     
-    if (util.isArray(data[key])){
+    if (util.isArray(data[key]) && data[key].length > 0){
       var blankKey = key.replace(/./gi, ' '); // used for spacing
       var blankPaddedKey = addPadding(blankKey, maxKeyLen);
       var arr = data[key];
