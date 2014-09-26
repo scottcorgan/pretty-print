@@ -10,16 +10,14 @@ var print = module.exports = function (data, options) {
 };
 
 function printObject (data, options) {
+  options = options || {};
+
   var defaults = {
     leftPadding: 2,
     rightPadding: 2
   };
   
   _.defaults(options, defaults);
-  
-  if (options) {
-    var padding = options.padding || 0;
-  }
   
   var keys = _.keys(data);
   var maxKeyLen = _.max(_.map(keys, function (key) {
