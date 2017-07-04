@@ -1,0 +1,12 @@
+{
+    "name": "cao wei",
+    "age": 30,
+    "job": {
+        "title": "engineer",
+        "salary": {
+            "basic": 10000,
+            "junior": 15000,
+            "senior": 20000
+        }
+    }
+}
