@@ -19,13 +19,13 @@ npm install pretty-print --save
 * ` rightPadding ` - extra padding after the object key. Defaults to 2.
 
 ```javascript
-var print = require('pretty-print');
+var pretty = require('pretty-print');
 var options = {
   leftPadding: 2,
   rightPadding: 3
 };
 
-print({
+pretty.print({
   key: 'value'
   longerKey: 'value'
 }, options);
@@ -46,14 +46,14 @@ print({
 * ` value ` - name of value to use as the list value
 
 ```javascript
-var print = require('pretty-print');
+var pretty = require('pretty-print');
 var options = {
   rightPadding: 3,
   key: 'name',
   value: 'height'
 };
 
-print([
+pretty.print([
   {
     name: 'guy',
     height: 'short',
@@ -73,13 +73,41 @@ print([
 ### Array of strings or numbers
 
 ```javascript
-var print = require('pretty-print');
+var pretty = require('pretty-print');
 
-print(['val1', 'val2', 'val3'], {leftPadding: 0});
+pretty.print(['val1', 'val2', 'val3'], {leftPadding: 0});
 
 // outputs:
 //
 //  val1
 //  val2
 //  val3
+```
+
+
+### generate object/array .... as more readable string
+
+
+```
+var pretty = require('pretty-print');
+
+let obj = {name:'caowei',age:30,title:{junior:'java',senior:'nodejs'}};
+
+let objString = pretty.generate(obj);
+
+console.log(objString);
+
+
+# you will get the output from standard output
+
+{
+    "name": "caowei",
+    "age": 30,
+    "title": {
+        "junior": "java",
+        "senior": "nodejs"
+    }
+}
+
+
 ```

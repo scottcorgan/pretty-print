@@ -1,5 +1,7 @@
-const print = require('../');
-const objprint = require('../src/');
+let print = require('../');
+let objprint = require('../src/');
+
+print = print.print;
 
 // var data = {
 //   one: '1',
@@ -54,4 +56,4 @@ let fun = {
   }
 };
 
-console.log(objprint.translate(fun));
+console.log(objprint.translate({name:'caowei',age:30,title:{junior:'java',senior:'nodejs'}}));
