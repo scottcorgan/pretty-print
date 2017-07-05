@@ -135,18 +135,26 @@ function isObject(data) {
  */
 const model = {
 
+    /**
+     *
+     * @param data
+     * @param options
+     * @return {*}
+     */
     print (data, options){
         if (isBasicArray(data)) return printBasicArray(data, options);
         if (isArray(data)) return printArrayOfObjects(data, options);
         if (isObject(data)) return printObject(data, options);
     },
+    /**
+     *
+     * @param object
+     * @return {*|string}
+     */
     generate(object){
-        return objPrint(object);
+        return objPrint.translate(object);
     }
 };
 
 
 module.exports = model;
-
-
-
