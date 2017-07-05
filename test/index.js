@@ -56,4 +56,6 @@ let fun = {
   }
 };
 
-console.log(objprint.translate({name:'caowei',age:30,title:{junior:'java',senior:'nodejs'}}));
+let dateundefined = {name:'caowei',age:undefined,current:new Date(),numberList:[1,2,3,4],stringList:['a','b','c'],rex:/regex/,title:{junior:'java',senior:'nodejs'}};
+
+console.log(objprint.translate(obj));

@@ -25,18 +25,32 @@ const model = {
                 if (_.isPlainObject(value)) {
                     return `"${key}":${spaceAfterComma}${model.generateLine(parentDepth + 1, value)}`;
                 } else if (_.isArray(value)) {
-                    return `"${key}":${spaceAfterComma}[${value.map(val => model.generateLine(parentDepth + 1, val))}]`;
-                } else if(_.isFunction(value)){
+                    return `"${key}":${spaceAfterComma}[${value.map(val => model.generateLine(parentDepth + 1, val)).join(`,${spaceAfterComma}`)}]`;
+                } else if (_.isFunction(value)) {
                     return `"${key}":${spaceAfterComma}Function`;
-                }else {
-                    return `"${key}":${spaceAfterComma}${JSON.stringify(value)}`;
+                } else {
+                    return `"${key}":${spaceAfterComma}${model.translate(value)}`;
                 }
             }).map(item => `${currentSpace}${item}`);
             return `{\n` + lines.join(',\n') + `\n${parentSpace}}`;
-        } else if(_.isArray(currentObj)) {
-            return `[${currentObj.map(val => model.generateLine(parentDepth, val)).join(',\n')}]`;
-        }else {
-            return String(currentObj);
+        } else if (_.isArray(currentObj)) {
+            return `[${currentObj.map(val => model.generateLine(parentDepth, val)).join(`,${spaceAfterComma}`)}]`;
+        } else if (_.isBoolean(currentObj)) {
+            return currentObj;
+        } else if (_.isNumber(currentObj)) {
+            return currentObj;
+        } else if (_.isDate(currentObj)) {
+            return `"${String(currentObj)}"`;
+        } else if (_.isNull(currentObj)) {
+            return 'null';
+        } else if (_.isUndefined(currentObj)) {
+            return 'undefined';
+        } else if (_.isString(currentObj)) {
+            return `"${String(currentObj)}"`;
+        } else if (_.isRegExp(currentObj)) {
+            return `new RegExp(${String(currentObj)})`;
+        } else {
+            return `"${String(currentObj)}"`;
         }
     }
 };
