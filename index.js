@@ -5,11 +5,6 @@ const objPrint = require('./src/');
 const asArray = require('as-array');
 const feedback = require('feedback');
 
-module.exports = function (data, options) {
-    if (isBasicArray(data)) return printBasicArray(data, options);
-    if (isArray(data)) return printArrayOfObjects(data, options);
-    if (isObject(data)) return printObject(data, options);
-};
 
 function printObject(data, options) {
     options = options || {};
@@ -133,3 +128,25 @@ function isArray(data) {
 function isObject(data) {
     return _.isObject(data) && !_.isArray(data);
 }
+
+
+/**
+ *  exports
+ */
+const model = {
+
+    print (data, options){
+        if (isBasicArray(data)) return printBasicArray(data, options);
+        if (isArray(data)) return printArrayOfObjects(data, options);
+        if (isObject(data)) return printObject(data, options);
+    },
+    generate(object){
+        return objPrint(object);
+    }
+};
+
+
+module.exports = model;
+
+
+
